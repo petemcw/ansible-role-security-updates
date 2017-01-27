@@ -1,0 +1,6 @@
+---
+- name: Configure automatic security updates for all nodes
+  hosts: all
+  connection: local
+  roles:
+    - test_role

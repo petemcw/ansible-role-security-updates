@@ -1,0 +1,61 @@
+---
+# We need sudo for some of the Docker commands.
+sudo: required
+
+# A list of OSes to use for testing.
+env:
+  - DISTRIBUTION: centos
+    VERSION: 7
+    INIT: /sbin/init
+    RUN_OPTS: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    PLAYBOOK: test.yml
+  - DISTRIBUTION: ubuntu
+    VERSION: 16.04
+    INIT: /lib/systemd/systemd
+    RUN_OPTS: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    PLAYBOOK: test.yml
+  - DISTRIBUTION: ubuntu
+    VERSION: 14.04
+    INIT: /sbin/init
+    RUN_OPTS: ""
+    PLAYBOOK: test.yml
+  - DISTRIBUTION: ubuntu
+    VERSION: 12.04
+    INIT: /sbin/init
+    RUN_OPTS: ""
+    PLAYBOOK: test.yml
+
+# Tell Travis to start Docker when it brings up an environment.
+services:
+  - docker
+
+# Pull the image from Docker Hub for the OS under test.
+before_install:
+  - docker pull petemcw/docker-ansible-${DISTRIBUTION}:${VERSION}
+
+# Start the container from the image and perform tests.
+script:
+  # Create a random file to store the container ID.
+  - container_id=$(mktemp)
+
+  # Run container detached.
+  - docker run --detach --volume="${PWD}":/etc/ansible/roles/test_role:ro ${RUN_OPTS} petemcw/docker-ansible-${DISTRIBUTION}:${VERSION} "${INIT}" > "${container_id}"
+
+  # Ansible syntax check.
+  - docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/test_role/tests/${PLAYBOOK} --syntax-check
+
+  # Run the role.
+  - docker exec --tty "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/test_role/tests/${PLAYBOOK}
+
+  # Check if idempotent.
+  - idempotence=$(mktemp)
+  - docker exec --tty "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/test_role/tests/${PLAYBOOK} | tee -a ${idempotence}
+  - >
+    tail ${idempotence}
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+# Notify Ansible Galaxy when a role builds successfully.
+notifications:
+  email: false
