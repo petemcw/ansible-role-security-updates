@@ -1,0 +1,8 @@
+---
+# Handlers for automatic security update notifications
+
+- name: restart yum-cron
+  service: >
+    name="{{ security_updates_service }}"
+    state=restarted
+    enabled=yes

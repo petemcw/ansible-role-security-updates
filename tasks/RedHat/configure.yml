@@ -1,0 +1,21 @@
+---
+# Defines tasks for RedHat/CentOS configuration
+
+- name: Write configuration templates
+  template: >
+    src="{{ security_updates_config_template }}"
+    dest="{{ security_updates_config_file }}"
+    mode=0644 owner=root group=root
+    backup=yes
+  notify:
+    - restart yum-cron
+  tags:
+    - security
+
+- name: Start service on boot
+  service: >
+    name={{ security_updates_service }}
+    state=started
+    enabled=yes
+  tags:
+    - security

@@ -1,0 +1,27 @@
+---
+# The variables file used for MOTD playbooks.
+# If not overriden in inventory or as a parameter, this is the value that will be used
+
+security_updates_enabled: true
+
+security_updates_yum_update_cmd: "security"
+security_updates_yum_update_messages: "yes"
+security_updates_yum_download_updates: "yes"
+security_updates_yum_apply_updates: "false"
+security_updates_yum_random_sleep: 360
+
+security_updates_yum_system_name: "None"
+security_updates_yum_emit_via: "stdio"
+security_updates_yum_output_width: 80
+
+security_updates_yum_email_from: "root@localhost"
+security_updates_yum_email_to: "root"
+security_updates_yum_email_host: "localhost"
+
+security_updates_yum_group_list: "None"
+security_updates_yum_group_package_types:
+  - mandatory
+  - default
+
+security_updates_yum_debuglevel: -2
+security_updates_yum_mdpolicy: "group:main"

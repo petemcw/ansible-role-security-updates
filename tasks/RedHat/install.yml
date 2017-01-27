@@ -1,0 +1,10 @@
+---
+# Defines tasks for RedHat/CentOS installation
+
+- name: Install packages
+  yum: >
+    name="{{ item }}"
+    state=latest
+  with_items: "{{ security_updates_packages }}"
+  tags:
+    - security

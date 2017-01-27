@@ -1,0 +1,21 @@
+---
+# Defines tasks to configure automatic security updates
+
+- name: Gather OS specific varibles
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+  tags:
+    - security
+
+- include: "{{ ansible_os_family }}/install.yml"
+  static: no
+  tags:
+    - security
+
+- include: "{{ ansible_os_family }}/configure.yml"
+  static: no
+  tags:
+    - security

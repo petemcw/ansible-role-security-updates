@@ -1,0 +1,9 @@
+---
+# Defines variables for RedHat/CentOS
+
+security_updates_service: "yum-cron"
+security_updates_packages:
+  - "yum-cron"
+  - "yum-utils"
+security_updates_config_template: "yum-cron.conf.j2"
+security_updates_config_file: "/etc/yum/yum-cron.conf"

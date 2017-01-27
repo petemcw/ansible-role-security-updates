@@ -1,0 +1,56 @@
+# This file is under control by Ansible for {{inventory_hostname}}
+# DO NOT MODIFY by hand; update the role called: {{ role_path | basename }}
+
+[commands]
+# what kind of update to use:
+# default                            = yum upgrade
+# security                           = yum --security upgrade
+# security-severity:critical         = yum --sec-severity=critical upgrade
+# minimal                            = yum --bugfix update-minimal
+# minimal-security                   = yum --security update-minimal
+# minimal-security-severity:critical =  --sec-severity=critical update-minimal
+update_cmd = {{ security_updates_yum_update_cmd | default("default") }}
+update_messages = {{ security_updates_yum_update_messages | default("yes") }}
+download_updates = {{ security_updates_yum_download_updates | default("yes") }}
+apply_updates = {{ security_updates_yum_apply_updates | default("yes") }}
+random_sleep = {{ security_updates_yum_random_sleep | default("360") }}
+
+[emitters]
+system_name = {{ security_updates_yum_system_name | default("None") }}
+emit_via = {{ security_updates_yum_emit_via | default("stdio") }}
+ouput_width = {{ security_updates_yum_output_width | default("80") }}
+
+[email]
+email_from = {{ security_updates_yum_email_from | default("root@localhost") }}
+email_to = {{ security_updates_yum_email_to | default("root") }}
+email_host = {{ security_updates_yum_email_host | default("localhost") }}
+
+[groups]
+group_list = {{ security_updates_yum_group_list | default("None") }}
+group_package_types = {{ security_updates_yum_group_package_types | join(', ') }}
+
+[base]
+# Use this to filter Yum core messages
+# -4: critical
+# -3: critical+errors
+# -2: critical+errors+warnings (default)
+debuglevel = {{ security_updates_yum_debuglevel | default("-2") }}
+mdpolicy = {{ security_updates_yum_mdpolicy | default("group:main") }}
+{% if security_updates_yum_skip_broken is defined %}
+{%  if security_updates_yum_skip_broken %}
+skip_broken = True
+{%  else %}
+skip_broken = False
+{%  endif %}
+{% else %}
+# skip_broken = True
+{% endif %}
+{% if security_updates_yum_assumeyes is defined %}
+{%  if security_updates_yum_assumeyes %}
+assumeyes = True
+{%  else %}
+assumeyes = False
+{%  endif %}
+{% else %}
+# assumeyes = True
+{% endif %}
