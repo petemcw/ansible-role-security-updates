@@ -1,0 +1,18 @@
+---
+# Defines tasks for Debian/Ubuntu configuration
+
+- name: Write configuration templates
+  template: >
+    src="{{ security_updates_config_template }}"
+    dest="{{ security_updates_config_file }}"
+    mode=0644 owner=root group=root
+  tags:
+    - security
+
+- name: Copy upgrade configuration
+  copy: >
+    src=auto-upgrades
+    dest=/etc/apt/apt.conf.d/20auto-upgrades
+    mode=0644 owner=root group=root
+  tags:
+    - security

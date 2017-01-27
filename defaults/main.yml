@@ -1,10 +1,31 @@
 ---
-# The variables file used for MOTD playbooks.
+# The variables file used for automatic security updates playbooks.
 # If not overriden in inventory or as a parameter, this is the value that will be used
 
 security_updates_enabled: true
 
+# security_updates_apt_origins_patterns: []
+# security_updates_apt_dl_limit: 70
+security_updates_apt_package_blacklist: []
+security_updates_apt_autofix_interrupted_dpkg: true
+security_updates_apt_minimal_steps: false
+security_updates_apt_install_on_shutdown: false
+security_updates_apt_mail: false
+security_updates_apt_mail_address: "root@localhost"
+security_updates_apt_mail_only_on_error: false
+security_updates_apt_remove_unused_dependencies: false
+security_updates_apt_automatic_reboot: false
+security_updates_apt_automatic_reboot_time: false
+security_updates_apt_ignore_apps_require_restart: false
+
+# default
+# security
+# security-severity:critical
+# minimal
+# minimal-security
+# minimal-security-severity:critical
 security_updates_yum_update_cmd: "security"
+
 security_updates_yum_update_messages: "yes"
 security_updates_yum_download_updates: "yes"
 security_updates_yum_apply_updates: "false"

@@ -1,0 +1,9 @@
+---
+# Defines variables for Debian
+
+security_updates_packages:
+  - "unattended-upgrades"
+security_updates_config_template: "unattended-upgrades.j2"
+security_updates_config_file: "/etc/apt/apt.conf.d/50unattended-upgrades"
+security_updates_apt_origins_patterns:
+  - "origin=Debian,codename=${distro_codename},label=Debian-Security"

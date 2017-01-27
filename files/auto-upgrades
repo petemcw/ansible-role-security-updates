@@ -1,0 +1,7 @@
+// This file is under control by Ansible for {{inventory_hostname}}
+// DO NOT MODIFY by hand; update the role called: {{ role_path | basename }}
+
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Unattended-Upgrade "1";
