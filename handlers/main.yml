@@ -6,3 +6,4 @@
     name="{{ security_updates_service }}"
     state=restarted
     enabled=yes
+  when: security_updates_automatic_enabled|bool == true
