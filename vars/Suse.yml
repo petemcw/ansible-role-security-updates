@@ -1,2 +1,11 @@
 ---
 # Defines variables for Suse/OpenSuse
+
+security_updates_packages:
+  - "yast2-online-update-configuration"
+
+# Some vars
+#security_updates_config_template: "unattended-upgrades.j2"
+#security_updates_config_file: "/etc/apt/apt.conf.d/50unattended-upgrades"
+#security_updates_apt_origins_patterns:
+#  - "origin=Debian,codename=${distro_codename},label=Debian-Security"
