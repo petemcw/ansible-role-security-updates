@@ -4,6 +4,10 @@
 
 security_updates_enabled: true
 
+# var used for automatic security updates
+security_updates_automatic_enabled: false
+
+
 # security_updates_apt_origins_patterns: []
 # security_updates_apt_dl_limit: 70
 security_updates_apt_package_blacklist: []
