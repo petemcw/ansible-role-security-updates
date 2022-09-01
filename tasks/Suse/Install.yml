@@ -1,0 +1,6 @@
+- name: Apply security patches
+  zypper:
+    name: '*'
+    state: latest
+    type: patch
+    extra_args: '--category=security'
