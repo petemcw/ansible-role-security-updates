@@ -1,0 +1,11 @@
+---
+# Defines for Suse/OpenSuse install
+
+- name: Install packages
+  yum: >
+    name="{{ item }}"
+    state=latest
+  with_items: "{{ security_updates_packages }}"
+  when: security_updates_cron_enabled|bool == true
+  tags:
+    - security
