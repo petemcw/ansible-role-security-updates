@@ -4,7 +4,7 @@
 
 security_updates_enabled: true
 
-# var used for automatic security updates
+# var used for cron security updates
 security_updates_cron_enabled: false
 
 
