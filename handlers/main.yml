@@ -1,5 +1,5 @@
 ---
-# Handlers for automatic security update notifications
+# Handlers for cron security update notifications
 
 - name: restart yum-cron
   service: >
