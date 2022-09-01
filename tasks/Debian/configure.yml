@@ -14,5 +14,6 @@
     src=auto-upgrades
     dest=/etc/apt/apt.conf.d/20auto-upgrades
     mode=0644 owner=root group=root
+  when: security_updates_automatic_enabled|bool == true
   tags:
     - security
