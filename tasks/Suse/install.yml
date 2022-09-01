@@ -1,6 +1,6 @@
 - name: Apply security patches
-  zypper:
-    name: '*'
-    state: latest
+  zypper: >
+    name="{{ item }}"
+    state=latest
     type: patch
     extra_args: '--category=security'
