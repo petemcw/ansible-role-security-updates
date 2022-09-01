@@ -13,6 +13,9 @@ them are as follows:
 # Enable automatic updates
 security_updates_enabled: true
 
+# Enable automatic updates with cron
+security_updates_automatic_enabled: false
+
 # An array of origins patterns to determine whether the package can be automatically installed
 security_updates_apt_origins_patterns: []
 
