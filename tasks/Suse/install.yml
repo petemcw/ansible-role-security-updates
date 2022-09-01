@@ -1,3 +1,6 @@
+---
+# Defines tasks for Suse/OpenSuse installation
+
 - name: Apply security patches
   zypper: >
     name="{{ item }}"
