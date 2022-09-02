@@ -1,2 +1,24 @@
 ---
+galaxy_info:
+  role_name: ansible-role-security-updates
+  namespace: mipsou
+  author: Mipsous
+  description: ansible-role-security-updates
+
+  #issue_tracker_url: https://github.com/ComplianceAsCode/content/issues
+
+  license: BSD-3-Clause
+
+  min_ansible_version: 2.5
+
+  platforms:
+  - name: EL
+  - name: debian
+  - name: ubuntu
+
+  galaxy_tags: [system, hardening, update, security, debian, ubuntu, redhat, suse]
+
+
 dependencies: []
+Footer
+© 2022 GitHub, Inc.
