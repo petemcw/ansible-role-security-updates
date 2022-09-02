@@ -10,17 +10,20 @@
   tags:
     - security
 
-- include: "{{ ansible_os_family }}/install.yml"
+- include: 
+    - "{{ ansible_os_family }}/install.yml"
   static: no
   tags:
     - security
 
-- include: "{{ ansible_os_family }}/configure.yml"
+- include:
+    - "{{ ansible_os_family }}/configure.yml"
   static: no
   tags:
     - security
 
-- include: "{{ ansible_os_family }}/update.yml"
+- include:
+    - "{{ ansible_os_family }}/update.yml"
   static: no
   tags:
     - security
