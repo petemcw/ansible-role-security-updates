@@ -10,6 +10,13 @@
   tags:
     - security
 
+- include: "{{ item }}"
+  loop:
+    - "{{ ansible_os_family }}/install.yml"
+    - "{{ ansible_os_family }}/configure.yml"
+    - "{{ ansible_os_family }}/update.yml"
+  when: iten is file
+  
 #- include: 
     # - "{{ ansible_os_family }}/install.yml"
   # static: no
@@ -27,10 +34,3 @@
   # static: no
   # tags:
     # - security
-    
-- include: "{{ item }}"
-  loop:
-    - "{{ ansible_os_family }}/install.yml"
-    - "{{ ansible_os_family }}/configure.yml"
-    - "{{ ansible_os_family }}/update.yml"
-  when: iten is file
