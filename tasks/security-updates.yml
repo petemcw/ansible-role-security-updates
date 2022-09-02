@@ -15,7 +15,7 @@
     - "{{ ansible_os_family }}/install.yml"
     - "{{ ansible_os_family }}/configure.yml"
     - "{{ ansible_os_family }}/update.yml"
-  when: item is file
+  #when: item is file
   
 #- include: 
     # - "{{ ansible_os_family }}/install.yml"
