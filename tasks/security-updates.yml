@@ -10,7 +10,7 @@
   tags:
     - security
 
-- include: "{{ item }}"
+- include_task: "{{ item }}"
   loop:
     - "{{ ansible_os_family }}/install.yml"
     - "{{ ansible_os_family }}/configure.yml"
