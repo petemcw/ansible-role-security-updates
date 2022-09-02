@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: ansible-role-security-updates
   namespace: mipsou
-  author: Mipsous
+  author: mipsou
   description: ansible-role-security-updates
 
   #issue_tracker_url: https://github.com/ComplianceAsCode/content/issues
@@ -13,10 +13,13 @@ galaxy_info:
 
   platforms:
   - name: EL
+    version: 8
   - name: debian
+    version: buster
   - name: ubuntu
+    version: bionic
 
-  galaxy_tags: [system, hardening, update, security, debian, ubuntu, redhat, suse]
+  galaxy_tags: [system, update, security, debian, ubuntu, redhat, suse, opensuse]
 
 
 dependencies: []
