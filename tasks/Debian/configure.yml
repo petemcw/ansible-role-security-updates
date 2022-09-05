@@ -18,3 +18,12 @@
   #when: security_updates_cron_enabled|bool == true
   tags:
     - security
+    
+- name: Copy upgrade configuration
+  copy: >
+    src=verify-peer
+    dest=/etc/apt/apt.conf.d/99verify-peer.conf
+    mode=0644 owner=root group=root
+  when: security_updates_ssl-proxy_enabled|bool == true
+  tags:
+    - security
