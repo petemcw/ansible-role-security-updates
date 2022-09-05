@@ -19,7 +19,7 @@
   tags:
     - security
     
-- name: Copy upgrade configuration
+- name: Copy peer configuration
   copy: >
     src=verify-peer
     dest=/etc/apt/apt.conf.d/99verify-peer.conf
