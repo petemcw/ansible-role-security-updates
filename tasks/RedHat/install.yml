@@ -3,9 +3,11 @@
 
 - name: Install packages
   yum: >
-    name="{{ item }}"
+    name="{{ outer_item }}"
     state=latest
   with_items: "{{ security_updates_packages }}"
+  loop_control:
+        loop_var: outer_item
   when: security_updates_cron_enabled|bool == true
   tags:
     - security
