@@ -26,7 +26,7 @@
     mode: '0644'
     owner: root
     group: root
-  when: security_updates_ssl-proxy_enabled|default(false)|bool == true
+  when: security_updates_ssl_proxy_enabled|default(false)|bool == true
   run_once: true
   tags:
     - security
