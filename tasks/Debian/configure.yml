@@ -20,10 +20,12 @@
     - security
     
 - name: Copy peer configuration
-  copy: >
-    src=verify-peer
-    dest=/etc/apt/apt.conf.d/99verify-peer.conf
-    mode=0644 owner=root group=root
-  when: security_updates_ssl-proxy_enabled is true
+  copy:
+    src: verify-peer
+    dest: /etc/apt/apt.conf.d/99verify-peer.conf
+    mode: '0644'
+    owner: root
+    group: root
+  when: security_updates_ssl-proxy_enabled|default(false)|bool == true
   tags:
     - security
