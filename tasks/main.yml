@@ -1,7 +1,7 @@
 ---
 # Defines tasks to configure automatic security updates
 
-- include: security-updates.yml
-  when: security_updates_enabled|bool == true
+- include_task: security-updates.yml
+  when: security_updates_enabled|default(false)|bool == true
   tags:
     - security
