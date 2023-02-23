@@ -7,6 +7,7 @@
     dest="{{ security_updates_config_file }}"
     mode=0644 owner=root group=root
     backup=yes
+  when: security_updates_cron_enabled|bool == true
   notify:
     - restart yum-cron
   tags:
@@ -17,5 +18,6 @@
     name={{ security_updates_service }}
     state=started
     enabled=yes
+  when: security_updates_cron_enabled|bool == true
   tags:
     - security

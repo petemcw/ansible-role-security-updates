@@ -1,5 +1,5 @@
 ---
-# Defines tasks for RedHat/CentOS installation
+# Defines for Suse/OpenSuse install
 
 - name: Install packages
   yum: >

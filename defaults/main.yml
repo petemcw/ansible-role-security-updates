@@ -4,6 +4,12 @@
 
 security_updates_enabled: true
 
+# var used for cron security updates
+security_updates_cron_enabled: false
+
+# var used when ssl proxy are in the middle break certificate.
+security_updates_ssl_proxy_enabled: false
+
 # security_updates_apt_origins_patterns: []
 # security_updates_apt_dl_limit: 70
 security_updates_apt_package_blacklist: []

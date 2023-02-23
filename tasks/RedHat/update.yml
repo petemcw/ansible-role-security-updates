@@ -1,0 +1,9 @@
+---
+# Defines tasks for Redhat family update
+
+- name: Apply security patches
+  yum: >
+    name="*"
+    security=yes
+    state=latest
+

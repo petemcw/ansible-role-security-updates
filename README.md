@@ -10,8 +10,11 @@ The variables that can be passed to this role and a brief description about
 them are as follows:
 
 ```yaml
-# Enable automatic updates
+# Enable updates security
 security_updates_enabled: true
+
+# Enable automatic updates with cron
+security_updates_cron_enabled: false
 
 # An array of origins patterns to determine whether the package can be automatically installed
 security_updates_apt_origins_patterns: []
